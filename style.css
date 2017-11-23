@@ -1,0 +1,99 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Aldrich, "03スマートフォントUI";
+	font-size: 10pt;
+}
+body {
+	width: 90%;
+	margin: 0 auto;
+	background: #001;
+	color: #428bca;
+	text-shadow: 0 0 5px #217cfc;
+	line-height: 1.75em;
+}
+
+header {
+	margin: 1em 0;
+}
+	header h1 {
+		color: #CCD;
+		font-size: 25pt;
+		line-height: 1.2em;
+		border-bottom: 1px solid #217cfc;
+	}
+
+main {
+}
+	section {
+		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHUlEQVQYV2NkIBIwCqo4/SdGLSMxikBqRk3EG1IAyqMHWbnQ9eoAAAAASUVORK5CYII=);
+		padding: 1em;
+		margin-bottom: 1em;
+		box-shadow: 0 0 5px 0px #3B81E1;
+	}
+	article {
+		margin-bottom: 0.5em;
+	}
+	input {
+		border: none;
+		background: #001;
+		box-shadow: 0 0 5px 0px #217cfc;
+		padding: 0.2em 0;
+		margin: 0.2em 0;
+		color: #CCC;
+		text-align: center;
+		border-radius: 5px;
+		width: 140px;
+	}
+	input:focus {
+		box-shadow: 0 0 10px 0px #217cfc;
+	}
+	main h2 {
+		color: #84B8E5;
+		margin-bottom: 0.5em;
+		border-bottom: 1px solid #666;
+		font-size: 13pt;
+	}
+	main ul {
+		margin: 0.5em 0;
+		font-size: 9pt;
+		color: #9DC8EF;
+		list-style: none;
+		text-indent: 1.5em;
+	}
+		main ul li {
+			margin-bottom: 1em;
+		}
+footer {
+	font-size: 5pt;
+	text-align: center;
+	color: #CCC;
+}
+	button {
+		border: 3px solid #217cfc;
+		border-radius: 50%;
+		width: 35px;
+		height: 35px;
+		font-size: 12pt;
+		font-weight: bold;
+		color: #217cfc;
+		background: #002;
+		box-shadow: 0 0 5px 0px #217cfc;
+		opacity: 0.4;
+		transition: 0.5s;
+		cursor: pointer;
+		position: fixed;
+		right: 10px;
+	}
+	button:hover {
+		opacity: 1.0;
+	}
+	#btn-up {
+		bottom: 10px;
+	}
+	#btn-revail {
+		bottom: 55px;
+	}
+	#btn-clear {
+		bottom: 100px;
+	}
