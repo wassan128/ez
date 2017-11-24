@@ -35,16 +35,18 @@ $(document).ready(function() {
 		}
 
 		let $quiz = $("main");
-		for (let i = 0; i < questions.length; i++) {
+		$.each(questions, (section_title, e) => {
 			let $section = $("<section>");
-			for (let k = 0; k < questions[i].length; k++) {
-				let q = questions[i][k].replace(/{([^{}]+)}/g, "<input name='$1'/>");
+			$section.append($("<h2>", {"text": section_title}));
+
+			for (let k = 0; k < questions[section_title].length; k++) {
+				let q = questions[section_title][k].replace(/{([^{}]+)}/g, "<input name='$1'/>");
 				let $article = $("<article>");
 				$article.append(q);
 				$section.append($article);
 			}
 			$quiz.append($section);
-		}
+		});
 		$("<section>").append();
 
 		for (let i = 0; i < $("input").length; i++) {

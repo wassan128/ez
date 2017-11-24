@@ -1,4 +1,4 @@
-# E'z
+# E'z - Easy generate, easy judge!
 ## What's this?
 * 一問一答サイトを簡単に作れるアプリ(?)です
 * 設定ファイルを編集して使ってください
@@ -14,14 +14,16 @@
   |_ jquery3.2.1.min.js 		: 外部ライブラリ
 - css/
   |- style.css 					: スタイルシート
-  |_ font-awesome.min.css 		: フォント関連のスタイルシート
+  |_ font-awesome.min.css 		: font-awesome関連のスタイルシート
 - fonts/
-  |- FontAwesome.otf 			: フォント関連のファイル
-  |- fontawesome-webfont.eot 	: フォント関連のファイル
-  |- fontawesome-webfont.svg 	: フォント関連のファイル
-  |- fontawesome-webfont.ttf 	: フォント関連のファイル
-  |- fontawesome-webfont.woff 	: フォント関連のファイル
-  |_ fontawesome-webfont.woff2 	: フォント関連のファイル
+  |- Aldrich-Regular.ttf  : アルファベットに適用しているフォントのファイル
+  |- 03SmartFontUI.ttf    : 日本語に適用しているフォントのファイル
+  |- FontAwesome.otf 			: font-awesome関連のファイル
+  |- fontawesome-webfont.eot 	: font-awesome関連のファイル
+  |- fontawesome-webfont.svg 	: font-awesome関連のファイル
+  |- fontawesome-webfont.ttf 	: font-awesome関連のファイル
+  |- fontawesome-webfont.woff 	: font-awesome関連のファイル
+  |_ fontawesome-webfont.woff2 	: font-awesome関連のファイル
 
 ## How to use
 1. config.js.sampleを参考に、config.jsを編集します

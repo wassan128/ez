@@ -1,7 +1,21 @@
+/* fonts */
+@font-face {
+    font-family: Aldrich;
+    src: url('../fonts/Aldrich-Regular.ttf') format('truetype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: "03スマートフォントUI";
+    src: url('../fonts/03SmartFontUI.ttf') format('truetype');
+}
+
+
+/* main */
 * {
 	margin: 0;
 	padding: 0;
 	font-family: Aldrich, "03スマートフォントUI";
+	font-weight: normal;
 	font-size: 10pt;
 	outline: none;
 }
@@ -9,7 +23,7 @@ body {
 	width: 90%;
 	margin: 0 auto;
 	background: #001;
-	color: #428bca;
+	color: #748798;
 	text-shadow: 0 0 5px #217cfc;
 	line-height: 1.75em;
 }
@@ -21,7 +35,7 @@ header {
 		color: #CCD;
 		font-size: 25pt;
 		line-height: 1.2em;
-		border-bottom: 1px solid #217cfc;
+		border-bottom: 1px solid #1C6EE1;
 	}
 
 main {
@@ -30,7 +44,7 @@ main {
 		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHUlEQVQYV2NkIBIwCqo4/SdGLSMxikBqRk3EG1IAyqMHWbnQ9eoAAAAASUVORK5CYII=);
 		padding: 1em;
 		margin-bottom: 1em;
-		box-shadow: 0 0 5px 0px #3B81E1;
+		box-shadow: 0 0 5px 0px #3777CE;
 	}
 	article {
 		margin-bottom: 0.5em;
@@ -53,12 +67,12 @@ main {
 		color: #84B8E5;
 		margin-bottom: 0.5em;
 		border-bottom: 1px solid #666;
-		font-size: 13pt;
+		font-size: 15pt;
 	}
 	main ul {
 		margin: 0.5em 0;
 		font-size: 9pt;
-		color: #9DC8EF;
+		color: #9dc8ef;
 		list-style: none;
 		text-indent: 1.5em;
 	}
@@ -81,7 +95,7 @@ footer {
 		font-weight: bold;
 		color: #217cfc;
 		background: #002;
-		box-shadow: 0 0 5px 0px #217cfc;
+		box-shadow: 0 0 10px 0px #217cfc;
 		opacity: 0.5;
 		transition: 0.3s;
 		cursor: pointer;
@@ -95,7 +109,7 @@ footer {
 			position: absolute;
 			right: -150px;
 			width: 120px;
-			transition: 0.5s;
+			transition: 0.3s;
 			opacity: 0.0;
 		}
 		footer button:hover span {
