@@ -3,6 +3,7 @@
 * 一問一答サイトを簡単に作れるアプリ(?)です
 * 設定ファイルを編集して使ってください
 * オフラインでも使えます
+* 動作確認はGoogle Chrome, Vivaldi, Firefox(Developper Edition)で行いました
 
 ## Files
 - index.html 					: メインのhtmlファイル
