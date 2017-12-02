@@ -48,6 +48,7 @@ main {
 	}
 	article {
 		margin-bottom: 0.5em;
+		word-wrap: break-word;
 	}
 	input {
 		border: none;
@@ -79,6 +80,12 @@ main {
 		main ul li {
 			margin-bottom: 1em;
 		}
+		main .qimgs {
+			display: block;
+			margin: 1em auto;
+			max-width: 45%;
+			max-height: 45%;
+		}
 footer {
 	text-align: center;
 	color: #CCC;
@@ -86,6 +93,7 @@ footer {
 	footer p {
 		font-size: 7pt;
 	}
+
 	footer button {
 		border: 3px solid #217cfc;
 		border-radius: 50%;
@@ -121,8 +129,8 @@ footer {
 		bottom: 10px;
 	}
 	#btn-clear {
-		bottom: 55px;
+		bottom: 65px;
 	}
 	#btn-revail {
-		bottom: 100px;
+		bottom: 120px;
 	}

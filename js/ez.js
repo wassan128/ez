@@ -40,7 +40,10 @@ $(document).ready(function() {
 			$section.append($("<h2>", {"text": section_title}));
 
 			for (let k = 0; k < questions[section_title].length; k++) {
-				let q = questions[section_title][k].replace(/{([^{}]+)}/g, "<input name='$1'/>");
+				let q = questions[section_title][k]
+					.replace(/[\<\>\'\"\/\\]/g, "")
+					.replace(/\#{([^{}]+)}/g, "<input name='$1'/>")
+					.replace(/\%{([^{}]+)}/g, "<br/><img class='qimgs' src='image/$1'/>");
 				let $article = $("<article>");
 				$article.append(q);
 				$section.append($article);
