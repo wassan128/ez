@@ -54,12 +54,12 @@ main {
 		border: none;
 		background: #001;
 		box-shadow: 0 0 5px 0px #217cfc;
-		padding: 0.2em 0;
+		padding: 0.2em;
 		margin: 0.2em 0.5em;
 		color: #CCC;
 		text-align: center;
 		border-radius: 5px;
-		width: 140px;
+		max-width: 500px;
 	}
 	input:focus {
 		box-shadow: 0 0 10px 0px #217cfc;

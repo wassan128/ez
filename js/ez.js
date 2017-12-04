@@ -1,15 +1,19 @@
 $(document).ready(function() {
 	const judge = function(idx) {
 		let tag = $("input")[idx];
+		let result = "wrong";
 		if (tag.value.length > 0) {
-			if (tag.value === tag.name) {
-				return "correct";
-			} else {
-				return "wrong";
+			ans = tag.name.split(",");
+			for (let i = 0; i < ans.length; i++) {
+				if (tag.value === ans[i]) {
+					result = "correct";
+					break;
+				} 
 			}
 		} else {
-			return "nothing";
+			result = "nothing";
 		}
+		return result;
 	};
 
 	const clear = function() {
@@ -24,7 +28,7 @@ $(document).ready(function() {
 		for (let i = 0; i < $("input").length; i++) {
 			let tag = $("input")[i];
 			tag.value = tag.name;
-			$(tag).css("box-shadow", effect[judge(i)]);
+			$(tag).css("box-shadow", effect["correct"]);
 		}
 	};
 
@@ -54,7 +58,8 @@ $(document).ready(function() {
 
 		for (let i = 0; i < $("input").length; i++) {
 			let tag = $("input")[i];
-			$(tag).css("box-shadow", effect[judge(i, tag.value)]);
+			$(tag).css("box-shadow", effect[judge(i, tag.value)])
+				.attr("size", Math.max.apply(null, tag.name.split(",").map((s)=>len(s) + 2)));
 		}
 	})();
 
