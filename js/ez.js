@@ -34,8 +34,12 @@ $(document).ready(function() {
 
 	// initialize
 	(function () {
-		if (title) {
-			$("h1").text(title);
+		try {
+			if (title) {
+				$("h1").text(title);
+			}
+		} catch (e) {
+			error("NO_CONFIG", e);
 		}
 
 		let $quiz = $("main");
