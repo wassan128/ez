@@ -1,93 +1,126 @@
-$(document).ready(function() {
-	const judge = function(idx) {
-		let tag = $("input")[idx];
-		let result = "wrong";
+"use strict";
+
+const KEY = 0;
+const VAL = 1;
+
+document.addEventListener("DOMContentLoaded", () => {
+	const judge = (tag) => {
 		if (tag.value.length > 0) {
-			ans = tag.name.split(",");
-			for (let i = 0; i < ans.length; i++) {
-				if (tag.value === ans[i]) {
-					result = "correct";
-					break;
+			const anss = tag.name.split(",");
+			for (const ans of anss) {
+				if (tag.value === ans) {
+					return "correct";
 				} 
 			}
 		} else {
-			result = "nothing";
+			return "nothing";
 		}
-		return result;
+		return "wrong";
 	};
 
-	const clear = function() {
-		for (let i = 0; i < $("input").length; i++) {
-			let tag = $("input")[i];
-			tag.value = "";
-			$(tag).css("box-shadow", effect[judge(i, "")]);
+	const clear = () => {
+		const inputs = document.querySelectorAll("input");
+		for (const input of inputs.entries()) {
+			input[VAL].value = "";
+			input[VAL].style["box-shadow"] = effect[judge(input[VAL])];
 		}
 	};
 
-	const revail = function() {
-		for (let i = 0; i < $("input").length; i++) {
-			let tag = $("input")[i];
-			tag.value = tag.name;
-			$(tag).css("box-shadow", effect["correct"]);
+	const revail = () => {
+		const inputs = document.querySelectorAll("input");
+		for (const input of inputs.entries()) {
+			input[VAL].value = input[VAL].name;
+			input[VAL].style["box-shadow"] = effect["correct"];
 		}
+	};
+
+	//TODO: 個別のエラー対応
+	const validate_config = () => {
+		let res = typeof(title) !== "undefined" &&
+			typeof(questions) !== "undefined" &&
+			typeof(effect) !== "undefined" &&
+			typeof(effect["correct"]) !== "undefined" &&
+			typeof(effect["wrong"]) !== "undefined" &&
+			typeof(effect["nothing"]) !== "undefined" &&
+			typeof(padding) !== "undefined";
+		return res;
+	};
+
+	// event handler
+	const set_event_handler = () => {
+		const inputs = document.querySelectorAll("input");
+		for (const input of inputs) {
+			input.addEventListener("focus", (e) => {
+				const tag = e.currentTarget;
+				tag.style["box-shadow"] = "0 0 10px 0px #217cfc";
+			}, false);
+
+			input.addEventListener("blur", (e) => {
+				const tag = e.currentTarget;
+				const user_ans = tag.value;
+				tag.style["box-shadow"] = effect[judge(tag)];
+			}, false);
+
+			input.addEventListener("dblclick", (e) => {
+				const tag = e.currentTarget;
+				tag.value = tag.name;
+			}, false);
+		};
+
+		const btn_up = document.getElementById("btn-up");
+		btn_up.addEventListener("click", () => {
+			scroll_top();
+		});
+
+		const btn_clear = document.getElementById("btn-clear");
+		btn_clear.addEventListener("click", () => {
+			clear();
+		});
+
+		const btn_revail = document.getElementById("btn-revail");
+		btn_revail.addEventListener("click", () => {
+			revail();
+		});
 	};
 
 	// initialize
-	(function () {
-		try {
-			if (title) {
-				$("h1").text(title);
-			}
-		} catch (e) {
-			error("NO_CONFIG", e);
+	(() => {
+		if (validate_config() === false) {
+			error("INVALID_CONFIG");
+			return;
 		}
 
-		let $quiz = $("main");
-		$.each(questions, (section_title, e) => {
-			let $section = $("<section>");
-			$section.append($("<h2>", {"text": section_title}));
+		if (title) {
+			document.querySelector("h1").innerText = title;
+		}
 
-			for (let k = 0; k < questions[section_title].length; k++) {
-				let q = questions[section_title][k]
-					.replace(/[\<\>\'\"\/\\]/g, "")
+		const quiz = document.querySelector("main");
+		for (const key in questions) {
+			const section = document.createElement("section");
+			const h2 = document.createElement("h2");
+			h2.innerText = key;
+			section.appendChild(h2);
+
+			for (const q_raw of questions[key]) {
+				const q = q_raw.replace(/[\<\>\'\"\/\\]/g, "")
 					.replace(/\#{([^{}]+)}/g, "<input name='$1'/>")
 					.replace(/\%{([^{}]+)}/g, "<br/><img class='qimgs' src='image/$1'/>");
-				let $article = $("<article>");
-				$article.append(q);
-				$section.append($article);
+				const p = document.createElement("p");
+				p.innerHTML = q;
+				const article = document.createElement("article");
+				article.appendChild(p);
+				section.appendChild(article);
 			}
-			$quiz.append($section);
-		});
-		$("<section>").append();
-
-		for (let i = 0; i < $("input").length; i++) {
-			let tag = $("input")[i];
-			$(tag).css("box-shadow", effect[judge(i, tag.value)])
-				.attr("size", Math.max.apply(null, tag.name.split(",").map((s)=>len(s) + 2)));
+			quiz.appendChild(section);
 		}
+
+		const inputs = document.querySelectorAll("input");
+		for (const input of inputs.entries()) {
+			input[VAL].style["box-shadow"] = effect[judge(input[VAL])];
+			input[VAL].size = Math.max.apply(null, input[VAL].name.split(",").map(s => len(s) + padding));
+		}
+
+		set_event_handler();
 	})();
 
-	// event handler
-	$("input").on("focus unfocus", function() {
-		$(this).css("box-shadow", "0 0 5px 0px #217cfc")
-	}).blur(function() {
-		const idx = $("input").index(this);
-		const user_ans = $("input")[idx].value;		
-		$(this).css("box-shadow", effect[judge(idx, user_ans)]);
-	}).on("dblclick", function() {
-		const idx = $("input").index(this);
-		this.value = this.name;
-	});
-
-	$("#btn-up").on("click", function() {
-		$("html,body").animate({scrollTop: 0}, "slow");
-	});
-
-	$("#btn-clear").on("click", function() {
-		clear();
-	});
-
-	$("#btn-revail").on("click", function() {
-		revail();
-	});
 });
