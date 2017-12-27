@@ -20,18 +20,18 @@ document.addEventListener("DOMContentLoaded", () => {
 	};
 
 	const clear = () => {
-		const inputs = document.querySelectorAll("input");
-		for (const input of inputs.entries()) {
-			input[VAL].value = "";
-			input[VAL].style["box-shadow"] = effect[judge(input[VAL])];
+		const boxes = document.getElementsByClassName("q-boxes");
+		for (const box of boxes) {
+			box.value = "";
+			box.style["box-shadow"] = effect[judge(box)];
 		}
 	};
 
 	const revail = () => {
-		const inputs = document.querySelectorAll("input");
-		for (const input of inputs.entries()) {
-			input[VAL].value = input[VAL].name;
-			input[VAL].style["box-shadow"] = effect["correct"];
+		const boxes = document.getElementsByClassName("q-boxes");
+		for (const box of boxes) {
+			box.value = box.name;
+			box.style["box-shadow"] = effect["correct"];
 		}
 	};
 
@@ -49,20 +49,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// event handler
 	const set_event_handler = () => {
-		const inputs = document.querySelectorAll("input");
-		for (const input of inputs) {
-			input.addEventListener("focus", (e) => {
+		const boxes = document.getElementsByClassName("q-boxes");
+		for (const box of boxes) {
+			box.addEventListener("focus", (e) => {
 				const tag = e.currentTarget;
 				tag.style["box-shadow"] = "0 0 10px 0px #217cfc";
 			}, false);
 
-			input.addEventListener("blur", (e) => {
+			box.addEventListener("blur", (e) => {
 				const tag = e.currentTarget;
 				const user_ans = tag.value;
 				tag.style["box-shadow"] = effect[judge(tag)];
 			}, false);
 
-			input.addEventListener("dblclick", (e) => {
+			box.addEventListener("dblclick", (e) => {
 				const tag = e.currentTarget;
 				tag.value = tag.name;
 			}, false);
@@ -106,7 +106,19 @@ document.addEventListener("DOMContentLoaded", () => {
 				const q = (q_raw === "") ? "<br/>" : 
 					q_raw.replace(/[\<\>\/\\]/g, "")
 						.replace(/\#{([^{}]+)}/g, (_, s) => {
-							return `<input name="${s.replace(/\"/g, "&quot;")}"/>`;
+							let tag;
+							if (s.match(/\[([^\[\]]+)\]/g)) {
+								const opts = RegExp.$1;
+								tag = `<select class='q-boxes' name='${opts.split(DELIM)[0]}'>`;
+								tag += "<option disabled selected value>-- 選択問題 --</option>";
+								shuf(opts.split(DELIM)).forEach((e) => {
+									tag += `<option>${e}</option>`;
+								});
+								tag += "</select>"
+							} else {
+								tag = `<input class='q-boxes' name='${s.replace(/\"/g, "&quot;")}'/>`;
+							}
+							return tag;
 						})
 						.replace(/\%{([^{}]+)}/g, (_, s) => {
 							return `<br/><img class="qimgs" src="image/${s.replace(/\"/g, "")}"/>`;

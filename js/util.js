@@ -23,6 +23,14 @@ const len = (s) => {
 	return encodeURIComponent(s).replace(/(?:%..){3}/g, "xx").length;
 };
 
+const shuf = (ary) => {
+	for (let i = 0; i < ary.length; i++) {
+		const r = Math.floor(Math.random() * ary.length);
+		[ary[i], ary[r]] = [ary[r], ary[i]];
+	}
+	return ary;
+};
+
 const scroll_top = () => {
 	let y = document.body.scrollTop || document.documentElement.scrollTop;
 	if (y) {

@@ -50,7 +50,7 @@ main {
 		margin-bottom: 0.5em;
 		word-wrap: break-word;
 	}
-	input {
+	input, select {
 		border: none;
 		background: #001;
 		box-shadow: 0 0 5px 0px #217cfc;
@@ -61,7 +61,11 @@ main {
 		border-radius: 5px;
 		max-width: 500px;
 	}
-	input:focus {
+	select {
+		padding: 0.2em 0.5em;
+		outline: none;
+	}
+	input:focus, select:focus {
 		box-shadow: 0 0 10px 0px #217cfc;
 	}
 	main h2 {
