@@ -2,11 +2,12 @@
 
 const KEY = 0;
 const VAL = 1;
+const DELIM = ";";
 
 document.addEventListener("DOMContentLoaded", () => {
 	const judge = (tag) => {
 		if (tag.value.length > 0) {
-			const anss = tag.name.split(",");
+			const anss = tag.name.split(DELIM);
 			for (const ans of anss) {
 				if (tag.value === ans) {
 					return "correct";
@@ -102,9 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			section.appendChild(h2);
 
 			for (const q_raw of questions[key]) {
-				const q = q_raw.replace(/[\<\>\'\"\/\\]/g, "")
-					.replace(/\#{([^{}]+)}/g, "<input name='$1'/>")
-					.replace(/\%{([^{}]+)}/g, "<br/><img class='qimgs' src='image/$1'/>");
+				const q = (q_raw === "") ? "<br/>" : 
+					q_raw.replace(/[\<\>\/\\]/g, "")
+						.replace(/\#{([^{}]+)}/g, (_, s) => {
+							return `<input name="${s.replace(/\"/g, "&quot;")}"/>`;
+						})
+						.replace(/\%{([^{}]+)}/g, (_, s) => {
+							return `<br/><img class="qimgs" src="image/${s.replace(/\"/g, "")}"/>`;
+						});
 				const p = document.createElement("p");
 				p.innerHTML = q;
 				const article = document.createElement("article");
@@ -117,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const inputs = document.querySelectorAll("input");
 		for (const input of inputs.entries()) {
 			input[VAL].style["box-shadow"] = effect[judge(input[VAL])];
-			input[VAL].size = Math.max.apply(null, input[VAL].name.split(",").map(s => len(s) + padding));
+			input[VAL].size = Math.max(...input[VAL].name.split(DELIM).map(s => len(s) + padding));
 		}
 
 		set_event_handler();

@@ -8,11 +8,8 @@
 ## Files
 - index.html 					: メインのhtmlファイル
 - config.js 					: 問題などの設定ファイル
-- config.js.sample 				: config.jsの書き方・サンプル
+- config.sample.js				: config.jsの書き方・サンプル
 - README.md 					: このファイル
-- js/
-  |- ez.js 						: 出題や正誤判定のプログラム
-  |_ jquery3.2.1.min.js 		: 外部ライブラリ
 - css/
   |- style.css 					: スタイルシート
   |_ font-awesome.min.css 		: font-awesome関連のスタイルシート
@@ -25,14 +22,23 @@
   |- fontawesome-webfont.ttf 	: font-awesome関連のファイル
   |- fontawesome-webfont.woff 	: font-awesome関連のファイル
   |_ fontawesome-webfont.woff2 	: font-awesome関連のファイル
+- image/
+  |_ banana.png					: サンプルの画像
+- js/
+  |- ez.js 						: 出題や正誤判定のプログラム
+  |_ util.js 					: その他の機能など
 
 ## How to use
-1. config.js.sampleを参考に、config.jsを編集します
-　 config.js.sampleの「.sample」を消して作り始めても大丈夫です
-2. 編集が終わったら保存して、index.htmlをブラウザで開きます
-3. 空欄に文字を打ち込んで回答します。枠からカーソルが外れると自動的に正誤判定されます
-4. わからないときは枠はダブルクリックすると答えが表示されます
-5. 右下に「クリアボタン(全ての回答をクリアする)」「答え表示ボタン(全ての回答を表示する)」「上へ戻るボタン」があります
+### 問題を作って配布したい人
+1. config.jsを編集します(javascriptのファイルです)
+2. 編集が終わったら保存して、index.htmlをブラウザで確認をします
+3. 本体(index.htmlやcss/など一式)を持っている人にはconfig.jsを配布するだけで使うことが出来ます。もし他の問題も作りたくなった場合は、既存のconfig.jsを上書き編集するか、config.old.jsなどに名前を変えて保存しておくと良いです
+
+### 問題を解きたい人
+1. index.htmlをブラウザで開きます
+2. 空欄に文字を打ち込んで回答します。枠からカーソルが外れると自動的に正誤判定されます
+3. わからないときは枠はダブルクリックすると答えが表示されます
+4. 右下に「クリアボタン(全ての回答をクリアする)」「答え表示ボタン(全ての回答を表示する)」「上へ戻るボタン」があります
 
 ## License
 MIT License
@@ -57,5 +63,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Last update
-* 2017/11/24
+## Update log
+* 2017/12/14: version 1.1(バグ修正、複数正答対応、リファクタリングなど)
+* 2017/11/24: version 1.0
+

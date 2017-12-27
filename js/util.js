@@ -2,6 +2,7 @@
 
 /* util functions */
 
+// WIP
 const error = (kind) => {
 	const ERR = {
 			"INVALID_CONFIG": "【エラー】以下の項目をご確認ください。\n1. config.jsはindex.htmlと同じ階層に設置していますか?\n2. config.jsの記述は正しいですか?(カッコ([])の閉じ忘れ、カンマ(,)やコロン(:)のつけ忘れなど)\n3. 以下の項目は定義されていますか?\ntitle, questions, effect, padding",
