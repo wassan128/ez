@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					q_raw.replace(/[\<\>\/\\]/g, "")
 						.replace(/\#{([^{}]+)}/g, (_, s) => {
 							let tag;
-							if (s.match(/\[([^\[\]]+)\]/g)) {
+							if (s.match(/\[([^{}\[\]]+)\]/g)) {
 								const opts = RegExp.$1;
 								tag = `<select class='q-boxes' name='${opts.split(DELIM)[0]}'>`;
 								tag += "<option disabled selected value>-- 選択問題 --</option>";
