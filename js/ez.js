@@ -109,14 +109,14 @@ document.addEventListener("DOMContentLoaded", () => {
 							let tag;
 							if (s.match(/\[([^{}\[\]]+)\]/g)) {
 								const opts = RegExp.$1;
-								tag = `<select class='q-boxes' name='${opts.split(DELIM)[0]}'>`;
+								tag = `<select class="q-boxes" name="${opts.split(DELIM)[0]}">`;
 								tag += "<option disabled selected value>-- 選択問題 --</option>";
 								shuf(opts.split(DELIM)).forEach((e) => {
 									tag += `<option>${e}</option>`;
 								});
 								tag += "</select>"
 							} else {
-								tag = `<input class='q-boxes' name='${s.replace(/\"/g, "&quot;")}'/>`;
+								tag = `<input class="q-boxes" name="${s.replace(/\"/g, '&quot;')}"/>`;
 							}
 							return tag;
 						})
