@@ -138,3 +138,22 @@ footer {
 	#btn-revail {
 		bottom: 120px;
 	}
+
+#links {
+    text-align: center;
+}
+    #links button {
+        margin: 0.5em;
+        padding: 1em;
+        background: #213c8c;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #links button:hover {
+        box-shadow: 0 0 10px 0px #217cfc;
+    }
+        #links button a {
+            text-decoration: none;
+            color: #fff;
+        }
